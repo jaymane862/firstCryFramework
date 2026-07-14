@@ -29,16 +29,17 @@ pipeline {
                 echo 'Generating Reports...'
             }
         }
-    }
-
-    post {
-
-        always {
         stage('Check Reports') {
     steps {
         bat 'dir target /s'
     }
 }
+    }
+
+    post {
+
+        always {
+        
 
             archiveArtifacts artifacts: 'target/test-output/**', fingerprint: true
 
